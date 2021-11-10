@@ -1,0 +1,34 @@
+{
+  "name": "practice-express",
+  "version": "1.0.0",
+  "description": "express로 만드는 간단한 토이 프로젝",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liswktjs/practice-Express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liswktjs/practice-Express/issues"
+  },
+  "homepage": "https://github.com/liswktjs/practice-Express#readme",
+  "dependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "express": "^4.17.1",
+    "prettier": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.4.4"
+  }
+}
