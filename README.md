@@ -7,6 +7,7 @@ express
 
 npm install express
 npm install @types/express
+npm install body-parser // body에 있는 내용들을 parser할 수있게 도와주는 패키지
 
 🎁 2021.11.11
 
@@ -14,7 +15,7 @@ npm install @types/express
 
 [X] 미들웨어 만들기
 
-[ ] REST API 라우팅 하기
+[X] REST API 라우팅 하기
 
 [ ] Pugs로 템플릿 그리기
 

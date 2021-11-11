@@ -1,31 +1,44 @@
 //@ts-check
 
 const express = require('express')
-const fs = require('fs')
+
+const userRouter = express.Router()
 
 const app = express()
+app.use(express.json())
 
 const PORT = 5000
 
-app.use('/', async (req, res, next) => {
-  console.log('middleware 1')
-  const fileContent = await fs.promises.readFile('.gitignore')
-  const requestedAt = new Date()
+const USERS = {
+  15: {
+    nickname: 'foo',
+  },
+}
+
+userRouter.get('/', (req, res) => {
+  res.send('User List')
+})
+userRouter.param('id', (req, res, next, value) => {
+  console.log(value)
   //@ts-ignore
-  req.requestedAt = requestedAt
-  //@ts-ignore
-  req.fileContent = fileContent
+  req.user = USERS[value]
   next()
 })
-
-app.use((req, res) => {
-  console.log('middleware 2')
-
-  res.send(
-    //@ts-ignore
-    `Hello express! : requested at ${req.requestedAt}, ${req.fileContent}`
-  )
+userRouter.get('/:id', (req, res) => {
+  res.send('User info width ID')
 })
+
+userRouter.post('/:id/nickname', (req, res) => {
+  //reg.body {"nickname" : "bar"}
+  //@ts-ignore
+  const { user } = req
+  const { nickname } = req.body
+
+  user.nickname = nickname
+  res.send(`User nickname updated: ${nickname}`)
+})
+
+app.use('/users', userRouter)
 
 app.listen(PORT, () => {
   console.log('The express server is working')
