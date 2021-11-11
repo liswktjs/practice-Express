@@ -1,17 +1,24 @@
 //@ts-check
 
 const express = require('express')
+const { nextTick } = require('process')
+const { runInNewContext } = require('vm')
 
 const userRouter = express.Router()
 
 const app = express()
 app.use(express.json())
+app.set('views', 'src/views')
+app.set('view engine', 'pug')
 
 const PORT = 5000
 
 const USERS = {
   15: {
     nickname: 'foo',
+  },
+  16: {
+    nickname: 'ho',
   },
 }
 
@@ -24,8 +31,17 @@ userRouter.param('id', (req, res, next, value) => {
   req.user = USERS[value]
   next()
 })
+
 userRouter.get('/:id', (req, res) => {
-  res.send('User info width ID')
+  const reMimeType = req.accepts(['json', 'html'])
+  if (reMimeType === 'json') {
+    //@ts-ignore
+    res.send(req.user)
+  } else if (reMimeType === 'html') {
+    res.render('user-profile', {
+      nickname: req.user.nickname,
+    })
+  }
 })
 
 userRouter.post('/:id/nickname', (req, res) => {
@@ -39,6 +55,12 @@ userRouter.post('/:id/nickname', (req, res) => {
 })
 
 app.use('/users', userRouter)
+
+app.get('/', (req, res) => {
+  res.render('index', {
+    message: 'Hello Pug',
+  })
+})
 
 app.listen(PORT, () => {
   console.log('The express server is working')

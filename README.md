@@ -9,6 +9,8 @@ npm install express
 npm install @types/express
 npm install body-parser // body에 있는 내용들을 parser할 수있게 도와주는 패키지
 
+npm install pug
+
 🎁 2021.11.11
 
 [X] 미들웨어 개념 정리
@@ -17,7 +19,7 @@ npm install body-parser // body에 있는 내용들을 parser할 수있게 도�
 
 [X] REST API 라우팅 하기
 
-[ ] Pugs로 템플릿 그리기
+[X] Pugs로 템플릿 그리기
 
 [ ] 스태틱 파일 서빙
 

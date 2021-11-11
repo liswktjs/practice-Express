@@ -27,7 +27,8 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
     "express": "^4.17.1",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",
