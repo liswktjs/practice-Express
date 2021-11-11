@@ -6,6 +6,9 @@
   "scripts": {
     "server": "nodemon src/main.js"
   },
+  "engines": {
+    "node": "14.17.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liswktjs/practice-Express.git"
